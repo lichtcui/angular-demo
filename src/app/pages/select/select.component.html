@@ -1,16 +1,11 @@
 <app-head head="Select Account"></app-head>
 
-<div *ngFor="let item of accounts">
-  <input
-    type="radio"
-    name="account"
-    (ngModel)="(account)"
-    (value)="(item.id)"
-  />
+<form [formGroup]="form" *ngFor="let item of accounts">
+  <input type="radio" formControlName="account" [value]="item.id" [checked]="form.value.account === item.id" />
   <div>
     <div>{{ item.name }}</div>
     <div>{{ item.desc }}</div>
   </div>
-</div>
+</form>
 
 <app-form-button [step]="1" (onNext)="onNext()"></app-form-button>

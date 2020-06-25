@@ -1,21 +1,41 @@
 <app-head head="Select Account Type"></app-head>
 
+<div>
+  <strong>{{ account?.name }}</strong>
+  <div>{{ account?.desc }}</div>
+</div>
+
 <app-back [step]="2" desc="Edit relationship account"></app-back>
 
 <div>
   <strong>Please select the account you would like to open</strong>
-  <!-- <div *ngFor="let item of accounts">
-    <input
-      type="radio"
-      name="account"
-      (ngModel)="(account)"
-      (value)="(item.id)"
-    />
-    <div>
-      <div>{{ item.name }}</div>
-      <div>{{ item.desc }}</div>
+  <form [formGroup]="form">
+    <div *ngFor="let item of accountTypes">
+      <input
+        type="radio"
+        formControlName="accountType"
+        [value]="item.id"
+        [checked]="form.value.accountType === item.id"
+      />
+      <div>
+        <div>{{ item.name }}</div>
+      </div>
     </div>
-  </div> -->
+
+    <div *ngIf="form.value.accountType !== 0">
+      <div *ngFor="let item of currencies">
+        <input
+          type="radio"
+          formControlName="currency"
+          [value]="item.id"
+          [checked]="form.value.currency === item.id"
+        />
+        <div>
+          <div>{{ item.name }}</div>
+        </div>
+      </div>
+    </div>
+  </form>
 
   <div>Select Currency</div>
   <div>select dropdown</div>
