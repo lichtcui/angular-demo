@@ -1,15 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-head',
-  templateUrl: './head.component.html',
-  styleUrls: ['./head.component.sass']
+  template: '<h1>{{ head }}</h1>',
+  styles: [''],
 })
-export class HeadComponent implements OnInit {
+export class HeadComponent {
+  @Input() head: string = '';
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  constructor() {}
 }

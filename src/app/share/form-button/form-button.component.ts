@@ -1,15 +1,49 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-form-button',
   templateUrl: './form-button.component.html',
-  styleUrls: ['./form-button.component.sass']
+  styleUrls: ['./form-button.component.sass'],
 })
-export class FormButtonComponent implements OnInit {
+export class FormButtonComponent {
+  @Input() step: number = 0;
+  @Output() onNext = new EventEmitter<number>();
 
-  constructor() { }
+  constructor(private router: Router) {}
 
-  ngOnInit(): void {
+  handleNext() {
+    if (this.step < 3) {
+      const url = this.nextStep(this.step + 1);
+      this.router.navigate([url]);
+    }
+
+    this.onNext.emit();
   }
 
+  handleCancel() {
+    const url = this.nextStep(this.step > 1 ? this.step - 1 : 1);
+    this.router.navigate([url]);
+  }
+
+  nextStep(step: number) {
+    const base = '/home/';
+    switch (step) {
+      case 2:
+        return `${base}fill`;
+      case 3:
+        return `${base}confirmation`;
+      default:
+        return `${base}select`;
+    }
+  }
+
+  get nextButtonText() {
+    switch (this.step) {
+      case 3:
+        return 'Submit';
+      default:
+        return 'Next';
+    }
+  }
 }

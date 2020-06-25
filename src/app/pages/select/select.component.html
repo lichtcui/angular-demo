@@ -1,5 +1,16 @@
-<app-head></app-head>
+<app-head head="Select Account"></app-head>
 
-<p>select works!</p>
+<div *ngFor="let item of accounts">
+  <input
+    type="radio"
+    name="account"
+    (ngModel)="(account)"
+    (value)="(item.id)"
+  />
+  <div>
+    <div>{{ item.name }}</div>
+    <div>{{ item.desc }}</div>
+  </div>
+</div>
 
-<app-form-button></app-form-button>
+<app-form-button [step]="1" (onNext)="onNext()"></app-form-button>

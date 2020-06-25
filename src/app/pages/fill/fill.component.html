@@ -1,5 +1,7 @@
-<app-head></app-head>
+<app-head head="Select Account Type"></app-head>
+
+<app-back [step]="2" desc="Edit relationship account"></app-back>
 
 <p>fill works!</p>
 
-<app-form-button></app-form-button>
+<app-form-button [step]="2" (onNext)="onNext()"></app-form-button>
