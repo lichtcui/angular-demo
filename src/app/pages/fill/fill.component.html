@@ -2,6 +2,23 @@
 
 <app-back [step]="2" desc="Edit relationship account"></app-back>
 
-<p>fill works!</p>
+<div>
+  <strong>Please select the account you would like to open</strong>
+  <!-- <div *ngFor="let item of accounts">
+    <input
+      type="radio"
+      name="account"
+      (ngModel)="(account)"
+      (value)="(item.id)"
+    />
+    <div>
+      <div>{{ item.name }}</div>
+      <div>{{ item.desc }}</div>
+    </div>
+  </div> -->
+
+  <div>Select Currency</div>
+  <div>select dropdown</div>
+</div>
 
 <app-form-button [step]="2" (onNext)="onNext()"></app-form-button>
