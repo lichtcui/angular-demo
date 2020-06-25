@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { Form } from '../../interfaces/form';
+import { Form } from '@interfaces/form';
 
 export const setFormData = createAction(
   '[Form] Set form',

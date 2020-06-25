@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { HomeComponent } from './pages/home/home.component';
-import { HomeResolveService } from './pages/home/home-resolve.service';
+import { HomeComponent } from '@pages/home/home.component';
+import { HomeResolveService } from '@pages/home/home-resolve.service';
 
 const routes: Routes = [
   {
@@ -9,7 +9,7 @@ const routes: Routes = [
     component: HomeComponent,
     resolve: { form: HomeResolveService },
     loadChildren: () =>
-      import('./pages/pages.module').then((m) => m.PagesModule),
+      import('@pages/pages.module').then((m) => m.PagesModule),
   },
   {
     path: '**',

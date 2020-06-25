@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
-import { AppStoreModule } from '../../store/store.module';
-import { Account } from '../../interfaces/form';
+import { AppStoreModule } from '@store/store.module';
+import { Account } from '@interfaces/form';
 import {
   getFormReducer,
   getFormData,
   getAccount,
-} from '../../store/selectors/form.selectors';
+} from '@store/selectors/form.selectors';
 
 @Component({
   selector: 'app-select',

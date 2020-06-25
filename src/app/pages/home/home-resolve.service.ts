@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Resolve } from '@angular/router';
-import { Account, AccountType, Currency } from '../../interfaces/form';
+import { Account, AccountType, Currency } from '@interfaces/form';
 import { HttpClient } from '@angular/common/http';
 import { Observable, forkJoin } from 'rxjs';
 

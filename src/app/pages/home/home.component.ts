@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { AppStoreModule } from '../../store/store.module';
-import { setFormData } from '../../store/actions/form.actions';
+import { AppStoreModule } from '@store/store.module';
+import { setFormData } from '@store/actions/form.actions';
 
 @Component({
   selector: 'app-home',

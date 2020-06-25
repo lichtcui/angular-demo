@@ -5,7 +5,7 @@ import {
   setCurrency,
   setFormData,
 } from '../actions/form.actions';
-import { Form } from '../../interfaces/form';
+import { Form } from '@interfaces/form';
 
 export interface FormState {
   form: Form;
