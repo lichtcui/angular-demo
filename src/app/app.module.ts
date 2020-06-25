@@ -6,6 +6,7 @@ import { PagesModule } from './pages/pages.module';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemDataService } from './services/in-mem-data.service';
+import { AppStoreModule } from './store/store.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -17,6 +18,7 @@ import { InMemDataService } from './services/in-mem-data.service';
     HttpClientInMemoryWebApiModule.forRoot(InMemDataService, {
       dataEncapsulation: false,
     }),
+    AppStoreModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
