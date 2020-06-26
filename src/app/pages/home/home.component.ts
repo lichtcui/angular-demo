@@ -6,8 +6,12 @@ import { setForm } from '@store/actions/form.actions';
 
 @Component({
   selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.sass'],
+  template: `
+    <div class="container mt-4 mb-5 form">
+      <router-outlet></router-outlet>
+    </div>
+  `,
+  styles: ['.form{max-width: 600px}'],
 })
 export class HomeComponent {
   constructor(

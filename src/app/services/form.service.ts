@@ -41,10 +41,10 @@ export class FormService {
     return this.accounts.find((i) => i.id === this.status.account);
   }
   getAccountType() {
-    return this.accounts.find((i) => i.id === this.status.accountType);
+    return this.accountTypes.find((i) => i.id === this.status.accountType);
   }
   getCurrency() {
-    return this.accounts.find((i) => i.id === this.status.currency);
+    return this.currencies.find((i) => i.id === this.status.currency);
   }
 
   handleStatusChange(nextStatus: OptionalStatus) {

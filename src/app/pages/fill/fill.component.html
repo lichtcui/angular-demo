@@ -1,44 +1,39 @@
 <app-head head="Select Account Type"></app-head>
 
-<div>
-  <strong>{{ account?.name }}</strong>
-  <div>{{ account?.desc }}</div>
+<div class="my-3">
+  <app-card [name]="account?.name" [label]="account?.desc"></app-card>
 </div>
 
 <app-back [step]="2" desc="Edit relationship account"></app-back>
 
-<div>
-  <strong>Please select the account you would like to open</strong>
-  <form [formGroup]="form">
-    <div *ngFor="let item of accountTypes">
+<div class="content py-3 mb-3">
+  <div class="font-weight-bold mb-2">
+    Please select the account you would like to open
+  </div>
+  <form [formGroup]="form" class="form">
+    <div *ngFor="let item of accountTypes" class="flex-center">
       <input
+        class="mr-2"
         type="radio"
         formControlName="accountType"
         [value]="item.id"
         [checked]="form.value.accountType === item.id"
       />
-      <div>
-        <div>{{ item.name }}</div>
-      </div>
+      <div>{{ item.name }}</div>
     </div>
 
-    <div *ngIf="form.value.accountType !== 0">
-      <div *ngFor="let item of currencies">
-        <input
-          type="radio"
-          formControlName="currency"
-          [value]="item.id"
-          [checked]="form.value.currency === item.id"
-        />
-        <div>
-          <div>{{ item.name }}</div>
-        </div>
+    <div *ngIf="form.value.accountType !== 0" class="select-currency">
+      <div class="font-weight-bold my-2">
+        Select Currency
       </div>
+
+      <select class="form-control" formControlName="currency">
+        <option *ngFor="let item of currencies" [ngValue]="item.id">
+          {{ item.name }}
+        </option>
+      </select>
     </div>
   </form>
-
-  <div>Select Currency</div>
-  <div>select dropdown</div>
 </div>
 
 <app-form-button

@@ -1,16 +1,20 @@
 <app-head head="Select Account"></app-head>
 
-<form [formGroup]="form" *ngFor="let item of accounts">
+<p class="mt-3">Please select the relationship account</p>
+
+<form
+  class="d-flex bg-light my-2 px-3"
+  [formGroup]="form"
+  *ngFor="let item of accounts"
+>
   <input
+    class="mr-3 mt-4"
     type="radio"
     formControlName="account"
     [value]="item.id"
     [checked]="form.value.account === item.id"
   />
-  <div>
-    <div>{{ item.name }}</div>
-    <div>{{ item.desc }}</div>
-  </div>
+  <app-card [name]="item.name" [label]="item.desc"></app-card>
 </form>
 
 <app-form-button

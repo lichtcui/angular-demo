@@ -45,11 +45,9 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "aot": true,
-            "assets": [
-              "src/assets/images/favicon.ico",
-              "src/assets"
-            ],
+            "assets": ["src/assets/images/favicon.ico", "src/assets"],
             "styles": [
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/assets/styles/global.sass"
             ],
             "scripts": []
@@ -109,11 +107,9 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
-            "assets": [
-              "src/assets/images/favicon.ico",
-              "src/assets"
-            ],
+            "assets": ["src/assets/images/favicon.ico", "src/assets"],
             "styles": [
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/assets/styles/global.sass"
             ],
             "scripts": []
@@ -127,9 +123,7 @@
               "tsconfig.spec.json",
               "e2e/tsconfig.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "e2e": {

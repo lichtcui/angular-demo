@@ -4,8 +4,14 @@ import { FormButtonComponent } from './form-button/form-button.component';
 import { HeadComponent } from './head/head.component';
 import { BackComponent } from './back/back.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CardComponent } from './card/card.component';
 
-const components = [FormButtonComponent, HeadComponent, BackComponent];
+const components = [
+  FormButtonComponent,
+  HeadComponent,
+  BackComponent,
+  CardComponent,
+];
 const modules = [CommonModule, FormsModule, ReactiveFormsModule];
 
 @NgModule({

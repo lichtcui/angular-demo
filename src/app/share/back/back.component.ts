@@ -4,7 +4,8 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-back',
   template: `
-    <div (click)="onBack()">
+    <div class="my-3" (click)="onBack()">
+      <span class="glyphicon glyphicon-chevron-left"></span>
       <div class="left"></div>
       <div>{{ desc }}</div>
     </div>

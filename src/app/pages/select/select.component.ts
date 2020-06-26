@@ -6,7 +6,7 @@ import { FormService } from '@services/form.service';
 @Component({
   selector: 'app-select',
   templateUrl: './select.component.html',
-  styleUrls: ['./select.component.sass'],
+  styles: [''],
 })
 export class SelectComponent {
   form = new FormGroup({

@@ -11,6 +11,8 @@ export class FormButtonComponent {
   @Input() disabled: boolean = true;
   @Output() onNext = new EventEmitter<number>();
 
+  succeed: boolean = false;
+
   constructor(private router: Router) {}
 
   handleNext() {
@@ -20,6 +22,13 @@ export class FormButtonComponent {
     }
 
     this.onNext.emit();
+
+    if (this.step === 3) {
+      this.succeed = true;
+      setTimeout(() => {
+        this.succeed = false;
+      }, 2000);
+    }
   }
 
   handleCancel() {

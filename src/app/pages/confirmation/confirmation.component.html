@@ -1,15 +1,12 @@
 <app-head head="Review & Confirm"></app-head>
 
-<div>Please review and confirm the details below before proceeding</div>
-
-<div>
-  <strong>Currency</strong>
-  <div>{{ currency?.name }}</div>
+<div class="my-3">
+  Please review and confirm the details below before proceeding
 </div>
 
-<div>
-  <strong>Account Type</strong>
-  <div>{{ accountType?.name }}</div>
+<div class="details">
+  <app-card name="Currency" [label]="currency?.name"></app-card>
+  <app-card name="Account Type" [label]="accountType?.name"></app-card>
 </div>
 
 <app-back [step]="3" desc="Edit details"></app-back>
