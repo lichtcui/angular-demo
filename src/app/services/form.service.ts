@@ -44,12 +44,6 @@ export class FormService {
     return this.accounts.find((i) => i.id === this.account);
   }
   getAccountType() {
-    console.log(
-      'getType',
-      this.accountTypes,
-      this.accountType,
-      this.accountTypes.find((i) => i.id === this.accountType)
-    );
     return this.accountTypes.find((i) => i.id === this.accountType);
   }
   getCurrency() {

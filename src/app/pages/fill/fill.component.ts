@@ -30,4 +30,9 @@ export class FillComponent {
     const { accountType, currency } = this.form.value;
     this.formServe.handleStatusChange({ accountType, currency });
   }
+
+  get disabled(): boolean {
+    const { accountType, currency } = this.form.value;
+    return !accountType || !currency;
+  }
 }

@@ -41,4 +41,8 @@
   <div>select dropdown</div>
 </div>
 
-<app-form-button [step]="2" (onNext)="onNext()"></app-form-button>
+<app-form-button
+  [step]="2"
+  [disabled]="disabled"
+  (onNext)="onNext()"
+></app-form-button>

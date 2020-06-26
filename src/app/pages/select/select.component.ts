@@ -24,4 +24,9 @@ export class SelectComponent {
     const { account } = this.form.value;
     this.formServe.handleStatusChange({ account });
   }
+
+  get disabled(): boolean {
+    const { account } = this.form.value;
+    return !account;
+  }
 }

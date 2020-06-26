@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 })
 export class FormButtonComponent {
   @Input() step: number = 0;
+  @Input() disabled: boolean = true;
   @Output() onNext = new EventEmitter<number>();
 
   constructor(private router: Router) {}
