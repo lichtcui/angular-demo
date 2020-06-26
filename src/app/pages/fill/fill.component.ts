@@ -22,7 +22,7 @@ export class FillComponent {
     this.accountTypes = formServe.accountTypes;
     this.currencies = formServe.currencies;
     this.account = formServe.getAccount();
-    const { accountType, currency } = formServe;
+    const { accountType, currency } = formServe.status;
     this.form.patchValue({ accountType, currency });
   }
 

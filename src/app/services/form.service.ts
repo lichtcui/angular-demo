@@ -4,6 +4,7 @@ import {
   AccountType,
   Currency,
   OptionalStatus,
+  Status,
 } from '@interfaces/form';
 import { select, Store } from '@ngrx/store';
 import { setStatus } from '@store/actions/form.actions';
@@ -22,9 +23,7 @@ export class FormService {
   currencies: Currency[];
 
   // status
-  account: number;
-  accountType: number;
-  currency: number;
+  status: Status;
 
   constructor(private store$: Store<AppStoreModule>) {
     const formStore$ = this.store$.pipe(select(getFormReducer));
@@ -33,30 +32,23 @@ export class FormService {
       this.accountTypes = res.accountTypes;
       this.currencies = res.currencies;
     });
-    formStore$.pipe(select(getFormStatus)).subscribe((res) => {
-      this.account = res.account;
-      this.accountType = res.accountType;
-      this.currency = res.currency;
-    });
+    formStore$
+      .pipe(select(getFormStatus))
+      .subscribe((res) => (this.status = res));
   }
 
   getAccount() {
-    return this.accounts.find((i) => i.id === this.account);
+    return this.accounts.find((i) => i.id === this.status.account);
   }
   getAccountType() {
-    return this.accountTypes.find((i) => i.id === this.accountType);
+    return this.accounts.find((i) => i.id === this.status.accountType);
   }
   getCurrency() {
-    return this.currencies.find((i) => i.id === this.currency);
+    return this.accounts.find((i) => i.id === this.status.currency);
   }
 
   handleStatusChange(nextStatus: OptionalStatus) {
-    const status = {
-      account: this.account,
-      accountType: this.accountType,
-      currency: this.currency,
-      ...nextStatus,
-    };
+    const status = { ...this.status, ...nextStatus };
     this.store$.dispatch(setStatus({ status }));
   }
 }

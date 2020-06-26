@@ -16,8 +16,9 @@ export class SelectComponent {
   accounts: Account[] = [];
 
   constructor(private formServe: FormService) {
-    this.accounts = this.formServe.accounts;
-    this.form.setValue({ account: this.formServe.account });
+    const { accounts, status } = this.formServe;
+    this.accounts = accounts;
+    this.form.setValue({ account: status.account });
   }
 
   onNext() {

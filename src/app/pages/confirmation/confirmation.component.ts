@@ -16,11 +16,7 @@ export class ConfirmationComponent {
   constructor(private formServe: FormService) {
     this.accountType = formServe.getAccountType();
     this.currency = formServe.getCurrency();
-    this.status = {
-      account: this.formServe.account,
-      accountType: this.formServe.accountType,
-      currency: this.formServe.currency,
-    };
+    this.status = this.formServe.status;
   }
 
   onNext() {
