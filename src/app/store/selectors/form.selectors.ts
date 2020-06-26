@@ -11,5 +11,5 @@ export const getFormData = createSelector(
 );
 export const getFormStatus = createSelector(
   selectFormState,
-  ({ form, ...rest }: FormState) => rest
+  (state: FormState) => state.status
 );

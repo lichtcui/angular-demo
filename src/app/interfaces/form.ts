@@ -16,3 +16,15 @@ export interface Form {
   accountTypes: AccountType[];
   currencies: Currency[];
 }
+
+export interface Status {
+  account: number;
+  accountType: number;
+  currency: number;
+}
+
+export interface OptionalStatus {
+  account?: number;
+  accountType?: number;
+  currency?: number;
+}

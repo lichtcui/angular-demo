@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AppStoreModule } from '@store/store.module';
-import { setFormData } from '@store/actions/form.actions';
+import { setForm } from '@store/actions/form.actions';
 
 @Component({
   selector: 'app-home',
@@ -17,7 +17,7 @@ export class HomeComponent {
     this.route.data.subscribe(
       ({ form: [accounts, accountTypes, currencies] }) => {
         this.store$.dispatch(
-          setFormData({ form: { accounts, accountTypes, currencies } })
+          setForm({ form: { accounts, accountTypes, currencies } })
         );
       }
     );

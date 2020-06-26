@@ -1,14 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Account } from '@interfaces/form';
-import { select, Store } from '@ngrx/store';
-import { setAccount } from '@store/actions/form.actions';
-import {
-  getFormStatus,
-  getFormData,
-  getFormReducer,
-} from '@store/selectors/form.selectors';
-import { AppStoreModule } from '@store/store.module';
+import { FormService } from '@services/form.service';
 
 @Component({
   selector: 'app-select',
@@ -22,18 +15,13 @@ export class SelectComponent {
 
   accounts: Account[] = [];
 
-  constructor(private store$: Store<AppStoreModule>) {
-    const formStore$ = this.store$.pipe(select(getFormReducer));
-    formStore$.pipe(select(getFormData)).subscribe((res) => {
-      this.accounts = res.accounts;
-    });
-    formStore$.pipe(select(getFormStatus)).subscribe(({ account }) => {
-      this.form.setValue({ account });
-    });
+  constructor(private formServe: FormService) {
+    this.accounts = this.formServe.accounts;
+    this.form.setValue({ account: this.formServe.account });
   }
 
   onNext() {
     const { account } = this.form.value;
-    this.store$.dispatch(setAccount({ account }));
+    this.formServe.handleStatusChange({ account });
   }
 }

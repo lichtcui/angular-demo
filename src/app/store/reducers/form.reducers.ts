@@ -1,17 +1,10 @@
 import { Action, createReducer, on } from '@ngrx/store';
-import {
-  setAccount,
-  setAccountType,
-  setCurrency,
-  setFormData,
-} from '../actions/form.actions';
-import { Form } from '@interfaces/form';
+import { setForm, setStatus } from '../actions/form.actions';
+import { Form, Status } from '@interfaces/form';
 
 export interface FormState {
   form: Form;
-  account: number;
-  accountType: number;
-  currency: number;
+  status: Status;
 }
 
 export const initialState: FormState = {
@@ -20,17 +13,17 @@ export const initialState: FormState = {
     accountTypes: [],
     currencies: [],
   },
-  account: 0,
-  accountType: 0,
-  currency: 0,
+  status: {
+    account: 0,
+    accountType: 0,
+    currency: 0,
+  },
 };
 
 const _formReducer = createReducer(
   initialState,
-  on(setAccount, (state, { account }) => ({ ...state, account })),
-  on(setAccountType, (state, { accountType }) => ({ ...state, accountType })),
-  on(setCurrency, (state, { currency }) => ({ ...state, currency })),
-  on(setFormData, (state, { form }) => ({ ...state, form }))
+  on(setForm, (state, { form }) => ({ ...state, form })),
+  on(setStatus, (state, { status }) => ({ ...state, status }))
 );
 
 export const formReducer = (state: FormState, action: Action) =>

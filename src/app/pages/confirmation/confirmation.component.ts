@@ -1,14 +1,6 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
-import { Account, AccountType, Currency } from '@interfaces/form';
-import { select, Store } from '@ngrx/store';
-import { setAccountType, setCurrency } from '@store/actions/form.actions';
-import {
-  getFormData,
-  getFormReducer,
-  getFormStatus,
-} from '@store/selectors/form.selectors';
-import { AppStoreModule } from '@store/store.module';
+import { AccountType, Currency } from '@interfaces/form';
+import { FormService } from '@services/form.service';
 
 @Component({
   selector: 'app-confirmation',
@@ -16,28 +8,19 @@ import { AppStoreModule } from '@store/store.module';
   styleUrls: ['./confirmation.component.sass'],
 })
 export class ConfirmationComponent {
-  accounts: Account[];
-  accountTypes: AccountType[];
-  currencies: Currency[];
-
   accountType: AccountType;
   currency: Currency;
 
-  constructor(private store$: Store<AppStoreModule>) {
-    const formStore$ = this.store$.pipe(select(getFormReducer));
-    formStore$.pipe(select(getFormData)).subscribe((res) => {
-      this.accountTypes = res.accountTypes;
-      this.currencies = res.currencies;
-    });
-    formStore$
-      .pipe(select(getFormStatus))
-      .subscribe(({ accountType, currency }) => {
-        this.accountType = this.accountTypes.find((i) => i.id === accountType);
-        this.currency = this.currencies.find((i) => i.id === currency);
-      });
+  constructor(private formServe: FormService) {
+    this.accountType = formServe.getAccountType();
+    this.currency = formServe.getCurrency();
   }
 
   onNext() {
-    console.log('next...');
+    const status = {
+      account: this.formServe.account,
+      accountType: this.formServe.accountType,
+      currency: this.formServe.currency,
+    };
   }
 }

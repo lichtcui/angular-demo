@@ -1,14 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Account, AccountType, Currency } from '@interfaces/form';
-import { select, Store } from '@ngrx/store';
-import { setAccountType, setCurrency } from '@store/actions/form.actions';
-import {
-  getFormData,
-  getFormReducer,
-  getFormStatus,
-} from '@store/selectors/form.selectors';
-import { AppStoreModule } from '@store/store.module';
+import { FormService } from '@services/form.service';
 
 @Component({
   selector: 'app-fill',
@@ -21,29 +14,20 @@ export class FillComponent {
     currency: new FormControl(0),
   });
 
-  accounts: Account[];
   accountTypes: AccountType[];
   currencies: Currency[];
   account: Account;
 
-  constructor(private store$: Store<AppStoreModule>) {
-    const formStore$ = this.store$.pipe(select(getFormReducer));
-    formStore$.pipe(select(getFormData)).subscribe((res) => {
-      this.accounts = res.accounts;
-      this.accountTypes = res.accountTypes;
-      this.currencies = res.currencies;
-    });
-    formStore$
-      .pipe(select(getFormStatus))
-      .subscribe(({ account, accountType, currency }) => {
-        this.account = this.accounts.find((i) => i.id === account);
-        this.form.setValue({ accountType, currency });
-      });
+  constructor(private formServe: FormService) {
+    this.accountTypes = formServe.accountTypes;
+    this.currencies = formServe.currencies;
+    this.account = formServe.getAccount();
+    const { accountType, currency } = formServe;
+    this.form.patchValue({ accountType, currency });
   }
 
   onNext() {
     const { accountType, currency } = this.form.value;
-    this.store$.dispatch(setAccountType({ accountType }));
-    this.store$.dispatch(setCurrency({ currency }));
+    this.formServe.handleStatusChange({ accountType, currency });
   }
 }
