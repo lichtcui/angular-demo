@@ -4,8 +4,10 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-back',
   template: `
-    <div class="my-3" (click)="onBack()">
-      <span class="glyphicon glyphicon-chevron-left"></span>
+    <div class="my-3 flex-center black-link" (click)="onBack()">
+      <small class="mr-2">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+      </small>
       <div class="left"></div>
       <div>{{ desc }}</div>
     </div>
